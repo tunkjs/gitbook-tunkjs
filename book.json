@@ -1,0 +1,50 @@
+{
+    "title": "tunkjs中文文档",
+    "description": "tunkjs入门教程、深入详解、实例说明、tunk相关组件使用说明",
+    "author": "steven-JC",
+    "output.name": "site",
+    "language": "zh-hans",
+    "gitbook": "3.2.3",
+    "root": ".",
+    "structure": {
+        "readme": "README.md"
+    }, 
+
+    "plugins": [
+        "prism",
+        "-search",
+        "-highlight",
+        "-livereload",
+        "search-plus@^0.0.11",
+        "github@^2.0.0",
+        "donate@^1.0.2",
+        "-sharing",
+        "sharing-plus@^0.0.2",
+        "toggle-chapters"
+    ],
+
+    "styles": {
+        "website": "css/website.css"
+    },
+
+    "pluginsConfig": {
+        "github": {
+            "url": "https://github.com/tunkjs"
+        },
+        "include-codeblock": {
+            "template": "ace",
+            "unindent": true,
+            "edit": true
+        },
+        
+        "donate": {
+            "wechat": "https://zhangjikai.com/resource/weixin.png",
+            "alipay": "https://zhangjikai.com/resource/alipay.png",
+            "title": "",
+            "button": "赏",
+            "alipayText": "支付宝打赏",
+            "wechatText": "微信打赏"
+        }
+        
+    }
+}

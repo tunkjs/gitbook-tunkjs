@@ -1,0 +1,19 @@
+
+.summary>li{
+    margin-top:10px;
+}
+.book-summary ul.summary li a, .book-summary ul.summary li span{
+    padding: 5px 15px;
+}
+.markdown-section pre[class*="language-"]{
+    border-radius: 5px;
+    border: solid 1px #eee;
+    background: #fbfaf9;
+}
+.markdown-section pre>code{
+    font-size: 14px;
+}
+.markdown-section blockquote{
+    color: #666;
+    border-left: 4px solid #88c3ec
+}
