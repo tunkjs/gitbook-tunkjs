@@ -20,3 +20,18 @@ p{
     color: #666;
     border-left: 4px solid #88c3ec
 }
+
+.markdown-section .toc{
+    display: inline-block;
+    max-width: 300px;
+    position: fixed;
+    right: 60px;
+    top: 60px;
+    z-index: 1000;
+}
+.markdown-section .toc li{
+    list-style: none;
+}
+.markdown-section .toc .toggle{
+    display: none;
+}

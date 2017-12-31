@@ -11,9 +11,10 @@
     }, 
 
     "plugins": [
-        "prism",
+        "fontsettings",
+        "splitter",
+        "atoc",
         "-search",
-        "-highlight",
         "search-plus@^0.0.11",
         "github@^2.0.0",
         "toggle-chapters"
@@ -24,13 +25,16 @@
     },
 
     "pluginsConfig": {
+        "fontsettings": {
+            "theme": "white",
+            "size":  1
+        },
         "github": {
             "url": "https://github.com/tunkjs"
         },
-        "include-codeblock": {
-            "template": "ace",
-            "unindent": true,
-            "edit": true
+        "atoc": {
+            "addClass": true,
+            "className": "toc"
         }
     }
 }
