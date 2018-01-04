@@ -1,45 +1,20 @@
 
 <div style="text-align:center; margin-bottom:50px;">
-<img style="width: 200px;" src="https://github.com/tunkjs/gitbook-tunkjs/blob/master/img/logo1x.png?raw=true" alt="tunk logo">
+<img style="width: 200px;" src="./img/logo1x.png?raw=true" alt="tunk logo">
 </div>
 
-## tunkjs是什么
-简单来说，tunkjs是一个应用状态管理器，但不止是状态管理器。对应用架构来说，它提供了一个让数据逻辑与交互逻辑完全解耦的模式。
 
-## 初衷
+#### tunkjs是一个具有状态管理功能的通信更灵活的前端数据服务框架，提供了一个让数据处理逻辑与交互逻辑完美解耦的模式。 
 
-你的app可能并不需要状态管理。而需要状态管理的项目中实际应用中，很多时候是某些场景下并不需要状态管理。这些场景的代码组织常常显得比较尴尬，不是违背代码组织的一致性，就是不符合状态管理的必要性。
+我们尽可能精简要暴露的API及处理的细节，让框架自身存在感更低，让你轻松上手，专注于业务的实现。
 
-开发完了wap版本，需要再开发微信小程序版本或者嵌入到原生APP的RN版本，如何做到最大化的复用wap版本的代码？
+通过限制模块更新状态树的范围，无需向store描述变更，状态变更也完全可预测。
 
-数据处理逻辑与交互逻辑分离可以很好地解决这个问题。交互逻辑通常直接依赖不同平台的视图实现，而数据处理逻辑可以做到跟交互逻辑完全解耦，数据处理逻辑很大程度上是可以直接复用的。
+----
 
-逐渐深入React+Redux开发一些项目，越发觉得很多成本是花在为了满足框架要求而编码，并不能很好的专注于业务逻辑的开发，既降低了开发效率，也提高了开发维护成本。
+<!-- toc -->
 
-引用别人的话：如果你总是想着“状态管理”，觉得自己要解决“状态管理”这个很严肃的问题，你大概就会在错误的道路上越走越远。
-
-视图层之外需要解决的不只是状态管理问题，架构合理性问题、编程体验问题、学习成本问题等是前端工程化需要解决的问题。架构性框架作为工程化核心部分，应该以使用者为中心，简化架构、简化api、简化组件模块通信方式、减轻框架自身的存在感，让使用者更好地专注于业务逻辑的开发。这正是tunkjs存在的价值及努力的方向。
-
-## 要点
-
-1、状态数据统一存储，一个模块对应着状态树的一个节点，一个状态节点仅能被对应的模块更新
-
-2、视图组件并不直接依赖tunk模块，而是相当于面向一个数据服务进行通信
-
-3、你需要面向数据逻辑对象来设计状态管理模块类，将不同数据源的数据处理逻辑集中到状态管理模块类里，视图组件只负责内容展示和交互处理
-
-4、视图组件可以轻松订阅不同模块的状态数据，也可以通过调起action的方法获得其返回的所有数据。
-
-> 你不需要将所有用到的数据都视定义为状态数据，不会被复用的数据不应定义为状态 
-> 
-> 由于可获得action返回的所有内容，你不需要为了使用一次的数据做繁琐的状态数据定义与绑定操作
-> 
-> 推荐你将所有的数据处理逻辑都放在在模块内，这样可以减轻视图层的复杂度，视图层仅负责内容展示及交互的逻辑处理
-> 
-
-5、tunk模块完全跟视图层无关，可以直接配合不同的视图层的实现，譬如wap版开发完，复用tunk模块，只需要实现小程序的视图层即可完成小程序的开发
-
-## 安装
+### 安装
 
 ````javascript
 npm install tunk -S
@@ -62,25 +37,192 @@ npm install tunk-react -S
 npm install tunk-wechat -S
 ````
 
-## 版本规则
+----
 
-tunk跟组件版本同一大版本号的不同子版本API都兼容，同一大版本号不会出现API的改变。
+### 一个模块
 
-> 譬如：
+````javascript
+// 场景：在用户管理列表中弹框查看用户详细信息
+import {create, action} from 'tunk'
+@create
+class userAdmin {
+	constructor(){
+		// 仅定义list为状态字段
+		this.state = {
+			list:[]
+		}
+	}
+	// 请求用户列表
+	@action
+	fetchList(param){
+		const res = this.request(...);
+		return {list: res.list};
+	}
+	// 下面的方法用于请求用户详细信息
+	// details用完即焚，不必作为状态去维护，因此未定义为状态字段
+	@action
+	async getUserDetails(id){
+		const res = await this.request(...);
+		return {details: res.data};
+	}
+	someFunc(){
+		this.getState()
+	}
+	...
+}
+````
 
->tunk 3.5 tunk-vue 3.1 tunk-strict 3.0 和谐配合
+你只需要面向数据逻辑对象来设计一个模块类，如有需要，你也可以尝试继承一个父类。
 
->tunk 3.0 跟 tunk-vue2.0 可能无法工作
+````javascript
+@create
+class userAdmin extends Base{
+	constructor(){
+		super();
+		this.state = {};
+	}
+}
+````
 
-## 要点
+`@create`将会对模块类进行重构、实例化以及存储该模块的实例化对象，实例化后，tunk内置store对象会生成字段名为'userAdmin'的由该模块负责维护的状态树节点对象
 
-tunk的工作是为视图层提供一个数据服务，而状态管理只是这个数据服务的一部分，因为很多场景下从数据源获得的“用完即焚”的数据并不应该被持久化存储。
+构造器内给state属性赋值，将决定对应状态树节点对象的字段和初始值，模块类被实例化后。
 
-你需要面向业务数据逻辑对象来设计状态管理模块，并且仅能由所属模块定义的Action去更新所属模块定义的状态，而模块实际不存储状态数据，这样的机制利于代码职责的划分及控制不可预知的状态变化。
+````javascript
+constructor(){
+   //初始化后state属性只读，二次赋值将报错，读取的数据来自状态树的状态快照
+	this.state = {
+		list:[]
+	}
+}
+````
 
-对于视图组件来说，tunk提供的是一个数据服务，组件可以轻松订阅需要的数据，也可以主动获取Action返回的处理结果。
+`@action`定义一个方法为一个action，可以是异步方法
+
+````javascript
+@action
+async fetchList(param){
+	const res = await this.request(...);
+	...
+}
+````
+
+action内可通过return返回结果或dispatch传入一个Object，让数据开始流入tunk，经过中间件的处理，最终流入到store状态树
+
+````javascript
+@action
+async fetchList(param){
+	const res = await this.request(...);
+	// return的内容会经过中间件的处理，最后更新到状态树
+	// this.dispatch({list: res.list}) 跟return返回的结果进入的处理流程一样
+	return {list: res.list};
+}
+````
+
+action只能更新当前模块对应的状态树节点的状态，而且只能更新对应节点已存在的字段的状态，无法创建新状态字段
+
+````javascript
+@action
+async fetchList(param){
+	const res = await this.request(...);
+	// 由于在构造器给state属性定义过list字段，
+	// 下面return的内容只有list的新状态更新到状态树
+	return {list: res.list, otherData: res.otherData};
+}
+````
+
+上面的例子中，otherData的数据不会更新到状态树，但可以通过调起这个action时获得该数据，如：
+
+````javascript
+async otherFunction(){
+	// 同一模块下的action
+	const res = await this.fetchList(...);
+	// 可通过内置dispatch方法调起其他模块的action，并获得action返回的结果
+	const res2 = await this.dispatch('moduleName.actionName');
+}
+````
+
+return 与 dispath后续的处理是一样的，区别是，return只能传递一个参数，dispatch不限
+
+
+### tunk状态流
+
+<div style="text-align:center; margin-bottom:50px;">
+<img src="./img/tunk-flow.png?raw=true" alt="tunk logo">
+</div>
+
+
+### 通信 
+
+#### 模块间通信 
+
+1. 通过`this.dispatch('moduleName.actionName');`调起其他模块的action及获取action处理结果
+2. 内置getState方法
+
+````javascript
+this.getState(); // 等同于 this.state，获得当前模块的状态
+//假设模块myModule的状态节点对象为{key0:{key1:[{key2:1}]}}
+// 获得其他模块的状态
+this.getState('myModule.key0.key1.0.key2'); // 1
+````
+
+#### 视图组件与模块间通信
+
+模块间通信和模块与组件间通信是完全解耦的，所有模块共同构成一个数据服务层，视图组件面向这个数据服务层进行通信。
+
+**视图组件调起action的两种方式：**
+
+1. 视图组件通常会被提供一个类似dispatch方法，这个方法仅支持调起action，如：`this.dispatch('moduleName.actionName', arg1, arg2, ...);`
+2. 跟视图框架绑定的组件通常会支持`actons`组件属性，用来自动生成该组件可直接调用的action代理方法
+
+**视图组件获得数据的两个途径：**
+
+1. **被动注入** ：订阅不同模块的状态字段，当action引起了状态变更，订阅的组件会被注入新状态
+2. **主动获取** ：视图组件通常会被提供一个类似dispatch方法，这个方法仅支持调返回action返回的结果
+
+不同视图框架绑定组件的实现大同小异，具体可查看相关实例
+
+* [tunk-react实例入门](doc/plugins/tunk-react实例入门.md)
+* [tunk-vue实例入门](doc/plugins/tunk-vue实例入门.md)
+* [tunk-wechat实例入门](doc/plugins/tunk-wechat实例入门.md)
 
 
 
+### 要点
+
+
+1. 对任何状态管理器来说，如果数据不会被复用或者数据量过大，不推荐你将这部分数据定义为状态来维护，状态快照的生成需要做到引用隔离，而引用隔离摆脱不了深克隆的性能损耗。
+
+2. “主动获取”的方式不会生成状态快照，因此效率较高，可以理解这部分数据为“临时状态”，一般用完即焚，可视为传统状态流的补充。
+
+3. 我们推荐你尽可能的把数据处理逻辑从视图层剥离开来，除了分离关注带来的好处外，假设你开发完wap版本的应用，又准备开发嵌入到原生app的RN版本或者微信小程序版本，只要包装好数据源，数据服务层是可以直接复用的。
+
+
+
+
+
+
+### 相关教程：
+
+* [基本概念](doc/base/基本概念.md)
+* [工作流程](doc/base/工作流程.md)
+* [tunk实例入门](doc/base/tunk实例入门.md)
+* [tunk API](doc/base/tunk-api.md)
+* [module API](doc/base/module-api.md)
+
+
+* [tunk-react](doc/plugins/tunk-react.md)
+* [tunk-react实例入门](doc/plugins/tunk-react实例入门.md)
+* [tunk-vue](doc/plugins/tunk-vue.md)
+* [tunk-vue实例入门](doc/plugins/tunk-vue实例入门.md)
+* [tunk-wechat](doc/plugins/tunk-wechat.md)
+* [tunk-wechat实例入门](doc/plugins/tunk-wechat实例入门.md)
+
+
+* [组件开发](doc/plugin-dev/README.md)
+* [中间件](doc/details/tunk中间件.md)
+* [Store](doc/details/tunk中间件.md)
+* [配置继承机制](doc/plugin-dev/配置继承机制.md)
+* [addMiddleware](doc/plugin-dev/配置继承机制.md)
 
 

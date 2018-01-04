@@ -25,9 +25,13 @@ p{
     display: inline-block;
     max-width: 300px;
     position: fixed;
-    right: 60px;
-    top: 60px;
+    right: 20px;
+    top: 50px;
     z-index: 1000;
+    background-color: #fff;
+    border: #ccc 1px solid;
+    padding: 10px;
+    font-size: 12px;
 }
 .markdown-section .toc li{
     list-style: none;
