@@ -4,7 +4,7 @@
 </div>
 
 
-#### tunkjs是一个具有状态管理功能的通信更灵活的前端数据服务框架，提供了一个让数据处理逻辑与交互逻辑完美解耦的模式。 
+#### tunkjs是一个具有状态管理功能的前端数据服务框架，提供了一个让数据处理逻辑与交互逻辑完美解耦与灵活通信的模式。 
 
 我们尽可能精简要暴露的API及处理的细节，让框架自身存在感更低，让你轻松上手，专注于业务的实现。
 
@@ -86,7 +86,7 @@ class userAdmin extends Base{
 
 `@create`将会对模块类进行重构、实例化以及存储该模块的实例化对象，实例化后，tunk内置store对象会生成字段名为'userAdmin'的由该模块负责维护的状态树节点对象
 
-构造器内给state属性赋值，将决定对应状态树节点对象的字段和初始值，模块类被实例化后。
+构造器内给state属性赋值，将决定对应状态树节点对象的字段和初始值。
 
 ````javascript
 constructor(){
@@ -182,9 +182,9 @@ this.getState('myModule.key0.key1.0.key2'); // 1
 
 不同视图框架绑定组件的实现大同小异，具体可查看相关实例
 
-* [tunk-react实例入门](doc/plugins/tunk-react实例入门.md)
-* [tunk-vue实例入门](doc/plugins/tunk-vue实例入门.md)
-* [tunk-wechat实例入门](doc/plugins/tunk-wechat实例入门.md)
+* [tunk-react](doc/plugins/tunk-react.md)
+* [tunk-vue](doc/plugins/tunk-vue.md)
+* [tunk-wechat](doc/plugins/tunk-wechat.md)
 
 
 
@@ -199,30 +199,5 @@ this.getState('myModule.key0.key1.0.key2'); // 1
 
 
 
-
-
-
-### 相关教程：
-
-* [基本概念](doc/base/基本概念.md)
-* [工作流程](doc/base/工作流程.md)
-* [tunk实例入门](doc/base/tunk实例入门.md)
-* [tunk API](doc/base/tunk-api.md)
-* [module API](doc/base/module-api.md)
-
-
-* [tunk-react](doc/plugins/tunk-react.md)
-* [tunk-react实例入门](doc/plugins/tunk-react实例入门.md)
-* [tunk-vue](doc/plugins/tunk-vue.md)
-* [tunk-vue实例入门](doc/plugins/tunk-vue实例入门.md)
-* [tunk-wechat](doc/plugins/tunk-wechat.md)
-* [tunk-wechat实例入门](doc/plugins/tunk-wechat实例入门.md)
-
-
-* [组件开发](doc/plugin-dev/README.md)
-* [中间件](doc/details/tunk中间件.md)
-* [Store](doc/details/tunk中间件.md)
-* [配置继承机制](doc/plugin-dev/配置继承机制.md)
-* [addMiddleware](doc/plugin-dev/配置继承机制.md)
 
 

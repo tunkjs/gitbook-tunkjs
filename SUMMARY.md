@@ -1,6 +1,6 @@
 * [概述](README.md)
 
-* [快速入门](doc/fast/快速入门.md)
+* [20分钟快速上手](doc/topic/20分钟快速上手.md)
 
 ---- 
 
@@ -10,13 +10,11 @@
     * [tunk API](doc/base/tunk-api.md)
     * [module API](doc/base/module-api.md)
     * [实例](doc/base/实例.md)
-
+ 
 ----
 
 * [tunk-react](doc/plugins/tunk-react.md)
-
 * [tunk-vue](doc/plugins/tunk-vue.md)
-
 * [tunk-wechat](doc/plugins/tunk-wechat.md)
 
 ----

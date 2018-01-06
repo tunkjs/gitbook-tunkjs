@@ -8,13 +8,14 @@ p{
 .book-summary ul.summary li a, .book-summary ul.summary li span{
     padding: 5px 15px;
 }
-.markdown-section pre[class*="language-"]{
+.markdown-section pre {
     border-radius: 5px;
     border: solid 1px #eee;
-    background: #fbfaf9;
+    background: #f0fbf6;
 }
 .markdown-section pre>code{
     font-size: 14px;
+    
 }
 .markdown-section blockquote{
     color: #666;
@@ -23,7 +24,7 @@ p{
 
 .markdown-section .toc{
     display: inline-block;
-    max-width: 300px;
+    max-width: 80px;
     position: fixed;
     right: 20px;
     top: 50px;
@@ -31,10 +32,18 @@ p{
     background-color: #fff;
     border: #ccc 1px solid;
     padding: 10px;
-    font-size: 12px;
+    font-size: 13px;
+    opacity: .3;
+    transition: all .2s;
+    overflow: hidden;
+}
+.markdown-section .toc:hover{
+    opacity: 1;
+    max-width: 400px;
 }
 .markdown-section .toc li{
     list-style: none;
+    white-space: nowrap;
 }
 .markdown-section .toc .toggle{
     display: none;

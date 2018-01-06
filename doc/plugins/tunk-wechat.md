@@ -1,4 +1,6 @@
 ## tunk-wechat
+
+
 tunk-wechat使tunk支持微信小程序，负责定义视图层如何 **触发Action** 及如何 **将新状态注入到视图组件**。
 
 微信小程序整体代码风格跟vue有几分相似，我们可以将小程序提供的js-wxml-wxss代码结构看作一个视图组件，tunk担当数据服务层，tunk与微信小程序完美合体！
@@ -15,7 +17,7 @@ npm install tunk-wechat -S
 ### 引入
 ````javascript
 import tunk from 'tunk'
-import {App} from 'tunk-wechat'
+import tunkWechat, {App} from 'tunk-wechat'
 tunk.use([tunkWechat]);
 
 // 引入放在modules文件夹下面的countdown模块
@@ -96,6 +98,8 @@ Page({
 
 如用户未定义`onBeforeStateChange`或`onBeforeStateChange`未返回Object结果，将直接将新状态通过setData注入到组件
 
+> 不建议把过多的逻辑放到onBeforeStateChange处理
+
 ##### dispatch
 用于调起数据服务模块的action，可获得返回action内执行return的内容，支持Promise 
 
@@ -112,7 +116,7 @@ Page({
 #### A. 两种方式触发模块的Action
 
 1. 通过添加`actions`设置向视图组件注入Action代理方法，直接调用这些代理方法
-2. 使用tunk-vue提供的 `this.dispatch('moduleName.actionName', [arg1, arg2, ...])`
+2. 使用tunk-wechat提供的 `this.dispatch('moduleName.actionName', [arg1, arg2, ...])`
 
 #### B. 两种方式获得Action处理结果
 
@@ -120,7 +124,8 @@ Page({
 2. **主动获取**：tunk-wechat为小程序App、Page提供的 `dispatch`方法，可获得action方法return的内容
 
 
-
+----
 
 [更多tunk实例](https://github.com/tunkjs/examples)
 
+[github](https://github.com/tunkjs/tunk-wechat)
