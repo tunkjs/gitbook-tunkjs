@@ -48,3 +48,8 @@ p{
 .markdown-section .toc .toggle{
     display: none;
 }
+
+.book .book-summary .exc-trigger{
+    top: 7px;
+}
+

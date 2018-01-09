@@ -1,251 +1,77 @@
-# tunkjs学习笔记
 
-## 20分钟快速上手教程
+<div style="text-align:center; margin-bottom:50px;">
+<img style="width: 200px;" src="./img/logo1x.png?raw=true" alt="tunk logo">
+</div>
 
-tunk旨在优化前端架构、提高开发体验、掰直学习曲线、降低web前端项目开发维护成本，为此做了一定的封装让其拥有必要的特性、减少特有的规则及编码细节、精简接口，入门只需要掌握几个方法的使用便可接手tunk架构项目的业务开发。
 
-tunk架构下，你的**前端代码一般会被分为两层：数据服务层与视图表现层**，数据服务层由N个**数据服务模块**组成，视图层由仅仅负责数据展现与交互处理。试图组件面向数据服务层进行通信，包括发起服务模块的action执行，以及订阅状态更新。
+#### tunkjs基于传统数据流的基础上定义了逻辑分层解耦及灵活通信的模式，是一个具有状态管理功能的前端数据服务框架。 
 
-接到一个业务需求你通常要做两件事，一个是根据业务需求和接口的数据逻辑**设计模块类**，另一件事是**写视图组件**。
+tunkjs使前端业务逻辑划分为数据处理逻辑与交互处理逻辑，这两种逻辑分别构成**数据服务层**及**视图层**，数据服务层的状态数据统一存储在一个Store的状态树，视图组件面向数据服务层进行通信。
 
-----
+tunk除了实现了**传统的数据流**，也提供了**基于action但绕过Store**的传输方式，可满足不适用状态管理或性能要求较高的场景。
 
-> 场景：开发一个用户管理列表，列表中弹框查看用户详细信息
+tunk通过**限制数据服务模块对状态树的更新范围**来避免状态变更的失控，合理抽象数据服务模块便无需向Store描述状态变更也可保证状态变更是可预测的。
 
-### 写个数据服务模块
-
-````javascript
-import {create, action} from 'tunk'
-// 创建userAdmin服务模块
-@create 
-class userAdmin {
-	constructor(){
-        // 服务模块被创建后，Store状态树创建'userAdmin'节点，节点对象的状态字段和初始值来自this.state
-        // state属性仅用于在构造器中定义当前模块负责维护的状态字段，不可二次赋值
-        // 下面仅定义list为状态字段
-		this.state = {
-			list:[]
-		}
-	}
-	// @action 定义一个请求用户列表数据的Action
-    // 只有userAdmin模块的action可以更新'userAdmin'节点的状态，并且只能更新已存在的状态字段，即 list 字段
-	@action
-	fetchList(param){
-        // request 是tunk-request组件提供的模块内置方法
-		const res = this.request(...);
-        
-        // 返回的结果可更新Store状态树 userAdmin 节点下的list字段，触发状态变更钩子
-		return {list: res.list};
-	}
-	// 下面的action用于请求用户详细信息
-	@action
-	async getUserDetails(id){
-		const res = await this.request(...);
-
-	    // 由于details数据不会被其他模块或试图组件复用，不必作为状态去维护，因此未在构造器中定义为状态字段
-
-        // 由于未定义detials为状态字段，因此，return之后产生状态变更，也不会触发状态变更钩子
-        // 那么有什么用呢？发起action执行会返回action执行结果
-
-        // 假设其他模块或试图组件调起当前模块的 getUserDetails，可以获得return的内容
-        // const details = await this.dispatch('userAdmin.getUserDetails', id).details;
-
-        // 当前模块调起当前模块的action或非action都可以获得返回结果
-        // const details = await this.getUserDetails(id).details;
-
-		return {details: res.data};
-	}
-
-	someFunc(){
-        // 下面等同于 const state = this.state，获得状态树'userAdmin'节点下的状态快照
-		const state = this.getState();
-        // 假设模块otherModule的状态节点对象为{key0: {key1: [{ key2: 1 }]}}
-        const stateFromOtherModule = this.getState('otherModule.key0.key1.0.key2'); // 1
-	}
-	...
-}
-````
-
-如果你的构建环境不支持修饰器和async/await，譬如微信小程序，你可以这样写一个模块
-
-````javascript
-// 注意：这里首字母大写
-import {Create, Action} from 'tunk'
-
-Create('userAdmin', {
-	// 注意：构造器 采用constructor(){}的写法会导致意外出错
-	constructor: function(){
-		this.state = {
-			list:[]
-		};
-	},
-	fetchList: Action(function(param) {
-        return this.request(...).then((res)=>{
-				return {list: res.list};
-			});
-		});
-	},
-	getUserDetails: Action(function(id){
-		return this.request(...).then((res)=>{
-			return {details: res.data};
-		});
-	}),
-	someFunc(){
-		const state = this.getState();
-        const stateFromOtherModule = this.getState('otherModule.key0.key1.0.key2'); // 1
-	}
-	...
-});
-````
-
-#### 总结:服务模块间通信：
-
-1. 通过`this.dispatch('moduleName.actionName')` 调起其他模块的action及获取action处理结果
-2. 通过`this.getState([keyPath])`，获得当前模块或其他模块的状态
+tunk力图简化它的API及编码细节，使框架自身存在感更低、编码方式更自然，让使用者更专注于业务的实现，此外，用于绑定不同视图框架的组件（tunk-vue/tunk-react/tunk-wechat）API几乎一致，让你无需花太多时间掌握不同绑定组件的使用.
 
 ----
 
-### 下面开发个视图组件
+<!-- toc -->
 
-**tunk与视图框架配合工作，需要跟视图框架绑定的组件，如tunk-vue、tunk-react、tunk-wechat**
+### 安装
 
-这些绑定组件负责定义视图组件如何 **触发Action** 及如何 **将新状态注入到视图组件**。
+安装tunkjs核心，压缩后不超过7kb
 
-下面你可以挑你要用到的视图框架的实例来阅读
-
-#### Vue
-````html
-<template>
-  <ul>
-	  <li v-for="item in list">
-		 ...
-		 <button @click="showUserDetails(item.id)">查看用户信息</button> 
-	  </li>
-  </ul>
-  ...
-</template>
-<script>
-export default {
-	// 状态订阅配置
-	state: {
-		// list 是模块userAdmin定义的状态字段，可以被视图组件订阅
-		// 组件被初始化后this.list将被注入当前 userAdmin.list 的状态
-		list: 'userAdmin.list'
-	},
-	// 代理action设置
-	actions:{
-		// 创建getDetails方法可调起模块的getUserDetails
-		getDetails: 'userAdmin.getUserDetails',
-	},
-	created(){
-		// 通过dispatch方式调起action
-		this.dispatch('userAdmin.fetchList');
-	},
-	methods:{
-		async showUserDetails(id){
-			// 调用action代理方法，并获得action执行结果
-			const details = await this.getDetails(id).details;
-			// 也可以通过dispatch调起action
-			// const details = await this.dispatch('userAdmin.getUserDetails', id).details;
-		}
-	}
-}
-</script>
-````
-
-> 
-
-#### React
 ````javascript
-import { connect } from 'tunk-react'
-@connect({ // 状态订阅配置
-	// list 是模块userAdmin定义的状态字段，可以被视图组件订阅
-	// 组件被初始化后this.list将被注入当前 userAdmin.list 的状态
-	list: 'userAdmin.list'
-}, {// 代理action设置
-	// 创建getDetails方法可调起模块的getUserDetails
-	getDetails: 'userAdmin.getUserDetails'
-})
-export default class UserAdmin extends Component {
-	constructor() {
-		// 通过dispatch方式调起action
-		this.dispatch('userAdmin.fetchList');
-	}
-	async showUserDetails(id) {
-		// 调用action代理方法，并获得action执行结果
-		const details = await this.getDetails(id).details;
-		// 也可以通过dispatch调起action
-		// const details = await this.dispatch('userAdmin.getUserDetails', id).details;
-	}
-    render() {
-		// 以prop的方式注入到当前组件
-		const { list } = this.props;
-		return (
-			<ul>
-				{list.map(item => (<li key="item.id">
-					...
-					<button onClick={this.showUserDetails.bind(this, item.id)}>查看用户信息</button> 
-				</li>))}
-			</ul>
-			...
-		)
-	}
-}
-
+npm install tunk -S
 ````
+除了tunk一般你还需要安装**视图框架绑定组件**
 
-#### WeChat
+##### 搭配vue
+
 ````javascript
-import {Page} from 'tunk-wechat'
-Page({
-	// 状态订阅配置，Page隐藏状态下不会被注入状态
-	// onShow时会重新注入已订阅的且已变更的状态
-    state: {
-		// list 是模块userAdmin定义的状态字段，可以被视图组件订阅
-		// 组件被初始化后this.list将被注入当前 userAdmin.list 的状态
-        list: 'userAdmin.list'
-	},
-	// 代理action设置
-	actions:{
-		// 创建getDetails方法可调起模块的getUserDetails
-        getDetails: 'userAdmin.getUserDetails'
-	},
-	// list有新状态准备注入前调用
-	onBeforeStateChange(newState){
-		// state订阅的状态数据，会被注入到this.data中
-		const oldListState = this.data.list;
-		// 返回结果可控制setData的内容
-		// 若没有定义onBeforeStateChange或没有返回Object内容，则默认注入newState
-    	return {list: newState.list.concat(oldListState)}
-	},
-	onLoad(){
-		// 通过dispatch方式调起action
-    	this.dispatch('userAdmin.fetchList');
-	},
-	
-	showUserDetails(id){
-		// 若action为同步函数，可直接获得结果，若为异步需在then方法中获得
-		// 调用action代理方法，并获得action执行结果
-		this.getDetails(id).then(data => {
-			const details = data.details;
-			...
-		});
-		// 也可以通过dispatch调起action
-		// this.dispatch('userAdmin.getUserDetails', id).then(...);
-		
-	}
-}
+npm install tunk-vue -S
+````
+##### 搭配react或react native
+
+````javascript
+npm install tunk-react -S
+````
+##### 搭配微信小程序
+
+````javascript
+npm install tunk-wechat -S
 ````
 
-#### 总结:视图组件与tunk数据服务层通信
+----
 
-##### A. 两种方式触发模块的Action
+### 相关文档
 
-1. 通过在connect设置action注入配置，向视图组件注入Action代理方法，向视图组件注入Action代理方法
-2. 使用 `this.dispatch('moduleName.actionName', [arg1, arg2, ...])`，支持异步
+* [初衷](doc/intro/初衷.md)
+* [必要特性](doc/intro/必要特性.md)
+* [Welcome](doc/intro/welcome.md)
+* [20分钟快速上手](doc/intro/20分钟快速上手.md)
 
-##### B. 两种方式获得Action处理结果
+### 基础
 
-1. **被动注入**：通过设置属性`state`，可订阅不同模块的状态
-2. **主动获取**：`dispatch`方法调起action，支持返回action执行结果，支持异步
+* [基本概念](doc/base/基本概念.md)
+* [数据流](doc/base/数据流.md)
+* [tunk API](doc/base/tunk-api.md)
+* [module API](doc/base/module-api.md)
+* [tunk-react](doc/plugins/tunk-react.md)
+* [tunk-vue](doc/plugins/tunk-vue.md)
+* [tunk-wechat](doc/plugins/tunk-wechat.md)
+
+### 组件开发
+
+* [middleware](doc/plugin-dev/middleware.md)
+* [hooks](doc/plugin-dev/hooks.md)
+* [store](doc/plugin-dev/store.md)
+* [config](doc/plugin-dev/config.md)
+
+### 组件推荐
+
+* [tunk-debug](doc/plugins/tunk-debug.md)
+* [tunk-request](doc/plugins/tunk-request.md)
+* [tunk-loader](doc/plugins/tunk-loader.md)
 

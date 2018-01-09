@@ -13,11 +13,18 @@
     "plugins": [
         "fontsettings",
         "splitter",
-        "atoc",
+        "anchor-navigation-ex",
+        "-lunr",
         "-search",
         "search-plus@^0.0.11",
         "github@^2.0.0",
-        "toggle-chapters"
+        "anchors",
+        "tbfed-pagefooter",
+        "alerts",
+        "versions-select",
+        "sitemap",
+        "simple-page-toc",
+        "expandable-chapters-small"
     ],
 
     "styles": {
@@ -25,6 +32,13 @@
     },
 
     "pluginsConfig": {
+        "simple-page-toc": {
+            "maxDepth": 4,
+            "skipFirstH1": true
+        },
+        "sitemap": {
+            "hostname": "http://www.tunkjs.com/"
+        },
         "fontsettings": {
             "theme": "white",
             "size":  1
@@ -32,9 +46,33 @@
         "github": {
             "url": "https://github.com/tunkjs"
         },
-        "atoc": {
-            "addClass": true,
-            "className": "toc"
+        "github-buttons": {
+            "repo": "tunkjs/tunk",
+            "types": [
+                "star",
+                "watch",
+                "fork"
+            ]
+        },
+        "tbfed-pagefooter": {
+            "copyright":"Copyright &copy tunkjs.com 2018",
+            "modify_label": "上次更新：",
+            "modify_format": "YYYY-MM-DD HH:mm:ss"
+        },
+        "versions": {
+            "options": [
+                {
+                    "value": "http://doc.tunkjs.com",
+                    "text": "v3.5.0"
+                }
+            ]
+        },
+        "anchor-navigation-ex": {
+            "isRewritePageTitle": true,
+            "isShowTocTitleIcon": true,
+            "tocLevel1Icon": "fa fa-hand-o-right",
+            "tocLevel2Icon": "fa fa-hand-o-right",
+            "tocLevel3Icon": "fa fa-hand-o-right"
         }
     }
 }
