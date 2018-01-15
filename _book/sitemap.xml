@@ -5,6 +5,7 @@
 <url> <loc>http://www.tunkjs.com/doc/intro/必要特性.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>http://www.tunkjs.com/doc/intro/welcome.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>http://www.tunkjs.com/doc/intro/20分钟快速上手.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>http://www.tunkjs.com/doc/base/</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>http://www.tunkjs.com/doc/base/基本概念.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>http://www.tunkjs.com/doc/base/数据流.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>http://www.tunkjs.com/doc/base/tunk-api.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
@@ -12,17 +13,14 @@
 <url> <loc>http://www.tunkjs.com/doc/plugins/tunk-react.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>http://www.tunkjs.com/doc/plugins/tunk-vue.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>http://www.tunkjs.com/doc/plugins/tunk-wechat.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
-<url> <loc>http://www.tunkjs.com/doc/plugin-dev/概述.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>http://www.tunkjs.com/doc/plugin-dev/</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>http://www.tunkjs.com/doc/plugin-dev/middleware.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>http://www.tunkjs.com/doc/plugin-dev/hooks.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>http://www.tunkjs.com/doc/plugin-dev/store.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>http://www.tunkjs.com/doc/plugin-dev/config.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>http://www.tunkjs.com/doc/plugin-dev/mixin.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>http://www.tunkjs.com/doc/plugins/</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>http://www.tunkjs.com/doc/plugins/tunk-debug.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>http://www.tunkjs.com/doc/plugins/tunk-request.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>http://www.tunkjs.com/doc/plugins/tunk-loader.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
-<url> <loc>http://www.tunkjs.com/doc/topic/</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
-<url> <loc>http://www.tunkjs.com/doc/topic/tunk性能优化.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
-<url> <loc>http://www.tunkjs.com/doc/topic/使用tunk的一些建议.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
-<url> <loc>http://www.tunkjs.com/doc/topic/选择tunkjs的理由.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 </urlset>

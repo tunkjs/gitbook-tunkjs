@@ -1,9 +1,9 @@
-## tunk API
+# tunk API
 
 <!-- toc -->
 
 
-#### @create
+## @create
 @create([moduleName:String, options:Object])
 
 > create修饰器，用于重构模块类及生成模块实例
@@ -24,7 +24,7 @@ class someModule{
 }
 ````
 
-#### @action
+## @action
 @action([options:Object])
 
 > action修饰器，用于定义一个方法为一个Action
@@ -37,7 +37,7 @@ class someModule{
 > 
 > 如仅查看某个action的相关debug log: `@action({debug: true})`
 
-#### Create
+## Create
 tunk.Create(moduleName:String, module:Object, [options:Object])
 
 > 若语法环境不支持修饰器的写法，tunk还提供了ES5写法
@@ -58,7 +58,7 @@ tunk.Create('userAdmin', {
 }, {debug:true});
 ````
 
-#### Action
+## Action
 
 tunk.Action(target:Function, [options:Object])
 
@@ -81,7 +81,7 @@ tunk.Create('userAdmin', {
 });
 ````
 
-#### use
+## use
 
 tunk.use(plugins:Array)
 
@@ -94,7 +94,7 @@ import tunkDebug from "tunk-debug";
 tunk.use([tunkVue, tunkDebug]);
 ````
 
-#### config
+## config
 
 tunk.config(configs:Object)
 

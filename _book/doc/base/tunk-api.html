@@ -187,9 +187,9 @@
         
         
     
-        <li class="chapter " data-level="2.1" data-path="基础.md">
+        <li class="chapter " data-level="2.1" data-path="./">
             
-                <span>
+                <a href="./">
             
                     
                     基础
@@ -311,9 +311,9 @@
         
         
     
-        <li class="chapter " data-level="4.1" data-path="../plugin-dev/概述.html">
+        <li class="chapter " data-level="4.1" data-path="../plugin-dev/">
             
-                <a href="../plugin-dev/概述.html">
+                <a href="../plugin-dev/">
             
                     
                     组件开发
@@ -370,6 +370,19 @@
             
                     
                     config
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.5" data-path="../plugin-dev/mixin.html">
+            
+                <a href="../plugin-dev/mixin.html">
+            
+                    
+                    mixin
             
                 </a>
             
@@ -442,71 +455,6 @@
     
 
     
-        
-        <li class="divider"></li>
-        
-        
-    
-        <li class="chapter " data-level="5.1" data-path="../topic/">
-            
-                <a href="../topic/">
-            
-                    
-                    Topic
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="5.1.1" data-path="../topic/tunk性能优化.html">
-            
-                <a href="../topic/tunk性能优化.html">
-            
-                    
-                    tunk性能优化
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="5.1.2" data-path="../topic/使用tunk的一些建议.html">
-            
-                <a href="../topic/使用tunk的一些建议.html">
-            
-                    
-                    使用tunk的一些建议
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="5.1.3" data-path="../topic/选择tunkjs的理由.html">
-            
-                <a href="../topic/选择tunkjs的理由.html">
-            
-                    
-                    选择tunkjs的理由
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-
-    
 
     <li class="divider"></li>
 
@@ -550,7 +498,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="tunk-api"><a name="tunk-api" class="plugin-anchor" href="#tunk-api"><i class="fa fa-link" aria-hidden="true"></i></a><a name="tunk-api" class="anchor-navigation-ex-anchor" href="#tunk-api"><i class="fa fa-link" aria-hidden="true"></i></a>tunk API</h2>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-anchor"></i><ul><li><span class="title-icon "></span><a href="#tunk-api"><b>1. </b>tunk API</a></li><ul><li><span class="title-icon "></span><a href="#create"><b>1.1. </b>@create</a></li><li><span class="title-icon "></span><a href="#action"><b>1.2. </b>@action</a></li><li><span class="title-icon "></span><a href="#create_1"><b>1.3. </b>Create</a></li><li><span class="title-icon "></span><a href="#action_1"><b>1.4. </b>Action</a></li><li><span class="title-icon "></span><a href="#use"><b>1.5. </b>use</a></li><li><span class="title-icon "></span><a href="#config"><b>1.6. </b>config</a></li></ul></ul></div><a href="#tunk-api" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="tunk-api"><a name="tunk-api" class="plugin-anchor" href="#tunk-api"><i class="fa fa-link" aria-hidden="true"></i></a><a name="tunk-api" class="anchor-navigation-ex-anchor" href="#tunk-api"><i class="fa fa-link" aria-hidden="true"></i></a>1. tunk API</h1>
 <!-- toc -->
 <ul>
 <li><a href="#create">@create</a></li>
@@ -561,7 +509,7 @@
 <li><a href="#config">config</a></li>
 </ul>
 <!-- tocstop -->
-<h4 id="create"><a name="create" class="plugin-anchor" href="#create"><i class="fa fa-link" aria-hidden="true"></i></a><a name="create" class="anchor-navigation-ex-anchor" href="#create"><i class="fa fa-link" aria-hidden="true"></i></a>@create</h4>
+<h2 id="create"><a name="create" class="plugin-anchor" href="#create"><i class="fa fa-link" aria-hidden="true"></i></a><a name="create" class="anchor-navigation-ex-anchor" href="#create"><i class="fa fa-link" aria-hidden="true"></i></a>1.1. @create</h2>
 <p>@create([moduleName:String, options:Object])</p>
 <blockquote>
 <p>create&#x4FEE;&#x9970;&#x5668;&#xFF0C;&#x7528;&#x4E8E;&#x91CD;&#x6784;&#x6A21;&#x5757;&#x7C7B;&#x53CA;&#x751F;&#x6210;&#x6A21;&#x5757;&#x5B9E;&#x4F8B;</p>
@@ -577,7 +525,7 @@
     ...
 }
 </code></pre>
-<h4 id="action"><a name="action" class="plugin-anchor" href="#action"><i class="fa fa-link" aria-hidden="true"></i></a><a name="action" class="anchor-navigation-ex-anchor" href="#action"><i class="fa fa-link" aria-hidden="true"></i></a>@action</h4>
+<h2 id="action"><a name="action" class="plugin-anchor" href="#action"><i class="fa fa-link" aria-hidden="true"></i></a><a name="action" class="anchor-navigation-ex-anchor" href="#action"><i class="fa fa-link" aria-hidden="true"></i></a>1.2. @action</h2>
 <p>@action([options:Object])</p>
 <blockquote>
 <p>action&#x4FEE;&#x9970;&#x5668;&#xFF0C;&#x7528;&#x4E8E;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x4E3A;&#x4E00;&#x4E2A;Action</p>
@@ -586,7 +534,7 @@
 <p><code>Object.assign(globalConfig, moduleConfig, actionConfig)</code></p>
 <p>&#x5982;&#x4EC5;&#x67E5;&#x770B;&#x67D0;&#x4E2A;action&#x7684;&#x76F8;&#x5173;debug log: <code>@action({debug: true})</code></p>
 </blockquote>
-<h4 id="create_1"><a name="create_1" class="plugin-anchor" href="#create_1"><i class="fa fa-link" aria-hidden="true"></i></a><a name="create_1" class="anchor-navigation-ex-anchor" href="#create_1"><i class="fa fa-link" aria-hidden="true"></i></a>Create</h4>
+<h2 id="create_1"><a name="create_1" class="plugin-anchor" href="#create_1"><i class="fa fa-link" aria-hidden="true"></i></a><a name="create_1" class="anchor-navigation-ex-anchor" href="#create_1"><i class="fa fa-link" aria-hidden="true"></i></a>1.3. Create</h2>
 <p>tunk.Create(moduleName:String, module:Object, [options:Object])</p>
 <blockquote>
 <p>&#x82E5;&#x8BED;&#x6CD5;&#x73AF;&#x5883;&#x4E0D;&#x652F;&#x6301;&#x4FEE;&#x9970;&#x5668;&#x7684;&#x5199;&#x6CD5;&#xFF0C;tunk&#x8FD8;&#x63D0;&#x4F9B;&#x4E86;ES5&#x5199;&#x6CD5;</p>
@@ -602,7 +550,7 @@
     }
 }, {debug:<span class="hljs-literal">true</span>});
 </code></pre>
-<h4 id="action_1"><a name="action_1" class="plugin-anchor" href="#action_1"><i class="fa fa-link" aria-hidden="true"></i></a><a name="action_1" class="anchor-navigation-ex-anchor" href="#action_1"><i class="fa fa-link" aria-hidden="true"></i></a>Action</h4>
+<h2 id="action_1"><a name="action_1" class="plugin-anchor" href="#action_1"><i class="fa fa-link" aria-hidden="true"></i></a><a name="action_1" class="anchor-navigation-ex-anchor" href="#action_1"><i class="fa fa-link" aria-hidden="true"></i></a>1.4. Action</h2>
 <p>tunk.Action(target:Function, [options:Object])</p>
 <blockquote>
 <p>&#x8DDF;tunk.Create&#x914D;&#x5408;&#x4F7F;&#x7528;&#xFF0C;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x4E3A;Action</p>
@@ -620,7 +568,7 @@
     }, {debug: <span class="hljs-literal">true</span>}),
 });
 </code></pre>
-<h4 id="use"><a name="use" class="plugin-anchor" href="#use"><i class="fa fa-link" aria-hidden="true"></i></a><a name="use" class="anchor-navigation-ex-anchor" href="#use"><i class="fa fa-link" aria-hidden="true"></i></a>use</h4>
+<h2 id="use"><a name="use" class="plugin-anchor" href="#use"><i class="fa fa-link" aria-hidden="true"></i></a><a name="use" class="anchor-navigation-ex-anchor" href="#use"><i class="fa fa-link" aria-hidden="true"></i></a>1.5. use</h2>
 <p>tunk.use(plugins:Array)</p>
 <blockquote>
 <p>&#x4F7F;&#x7528;tunk&#x7EC4;&#x4EF6;&#xFF0C;&#x4E86;&#x89E3;tunk&#x7EC4;&#x4EF6;&#x5F00;&#x53D1;&#xFF0C;&#x53EF;&#x6233;&#x8FD9;&#x91CC; <a href="https://github.com/tunkjs/tunk/blob/master/doc/tunk%E7%BB%84%E4%BB%B6%E5%BC%80%E5%8F%91.md" target="_blank">tunk&#x7EC4;&#x4EF6;&#x5F00;&#x53D1;</a> </p>
@@ -630,7 +578,7 @@
 <span class="hljs-keyword">import</span> tunkDebug <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;tunk-debug&quot;</span>;
 tunk.use([tunkVue, tunkDebug]);
 </code></pre>
-<h4 id="config"><a name="config" class="plugin-anchor" href="#config"><i class="fa fa-link" aria-hidden="true"></i></a><a name="config" class="anchor-navigation-ex-anchor" href="#config"><i class="fa fa-link" aria-hidden="true"></i></a>config</h4>
+<h2 id="config"><a name="config" class="plugin-anchor" href="#config"><i class="fa fa-link" aria-hidden="true"></i></a><a name="config" class="anchor-navigation-ex-anchor" href="#config"><i class="fa fa-link" aria-hidden="true"></i></a>1.6. config</h2>
 <p>tunk.config(configs:Object)</p>
 <blockquote>
 <p>tunk&#x5168;&#x5C40;&#x914D;&#x7F6E;</p>
@@ -639,7 +587,7 @@ tunk.use([tunkVue, tunkDebug]);
 tunk.config({debug:<span class="hljs-literal">true</span>});
 </code></pre>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; tunkjs.com 2018 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x4E0A;&#x6B21;&#x66F4;&#x65B0;&#xFF1A;
-2017-12-31 22:16:27
+2018-01-12 14:57:29
 </span></footer>
                                 
                                 </section>
@@ -683,7 +631,7 @@ tunk.config({debug:<span class="hljs-literal">true</span>});
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"tunk API","level":"2.1.3","depth":2,"next":{"title":"module API","level":"2.1.4","depth":2,"path":"doc/base/module-api.md","ref":"doc/base/module-api.md","articles":[]},"previous":{"title":"数据流","level":"2.1.2","depth":2,"path":"doc/base/数据流.md","ref":"doc/base/数据流.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","splitter","anchor-navigation-ex","-lunr","-search","search-plus@^0.0.11","github@^2.0.0","anchors","tbfed-pagefooter","alerts","versions-select","sitemap","simple-page-toc","expandable-chapters-small","livereload"],"root":".","styles":{"website":"css/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy tunkjs.com 2018","modify_label":"上次更新：","modify_format":"YYYY-MM-DD HH:mm:ss"},"github":{"url":"https://github.com/tunkjs"},"livereload":{},"simple-page-toc":{"maxDepth":4,"skipFirstH1":true},"splitter":{},"versions-select":{"type":"branches"},"fontsettings":{"family":"sans","size":1,"theme":"white"},"highlight":{},"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"isRewritePageTitle":true,"showLevel":true,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","isShowTocTitleIcon":true,"printLog":false,"multipleH1":true,"associatedWithSummary":true,"float":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"sitemap":{"hostname":"http://www.tunkjs.com/"},"alerts":{},"github-buttons":{"repo":"tunkjs/tunk","types":["star","watch","fork"]},"expandable-chapters-small":{},"versions":{"options":[{"value":"http://doc.tunkjs.com","text":"v3.5.0"}]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"search-plus":{}},"theme":"default","author":"steven-JC","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","language":"zh-hans","output.name":"site","gitbook":"3.2.3","description":"tunkjs入门教程、深入详解、实例说明、tunk相关组件使用说明"},"file":{"path":"doc/base/tunk-api.md","mtime":"2017-12-31T14:16:27.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-09T11:34:56.002Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"tunk API","level":"2.1.3","depth":2,"next":{"title":"module API","level":"2.1.4","depth":2,"path":"doc/base/module-api.md","ref":"doc/base/module-api.md","articles":[]},"previous":{"title":"数据流","level":"2.1.2","depth":2,"path":"doc/base/数据流.md","ref":"doc/base/数据流.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","splitter","anchor-navigation-ex","-lunr","-search","search-plus@^0.0.11","github@^2.0.0","anchors","tbfed-pagefooter","alerts","versions-select","sitemap","simple-page-toc","expandable-chapters-small"],"root":".","styles":{"website":"css/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy tunkjs.com 2018","modify_label":"上次更新：","modify_format":"YYYY-MM-DD HH:mm:ss"},"github":{"url":"https://github.com/tunkjs"},"simple-page-toc":{"maxDepth":4,"skipFirstH1":true},"splitter":{},"versions-select":{"type":"branches"},"fontsettings":{"family":"sans","size":1,"theme":"white"},"highlight":{},"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"isRewritePageTitle":true,"showLevel":true,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","isShowTocTitleIcon":true,"printLog":false,"multipleH1":true,"associatedWithSummary":true,"float":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"sitemap":{"hostname":"http://www.tunkjs.com/"},"alerts":{},"github-buttons":{"repo":"tunkjs/tunk","types":["star","watch","fork"]},"expandable-chapters-small":{},"versions":{"options":[{"value":"http://doc.tunkjs.com","text":"v3.5.0"}]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"search-plus":{}},"theme":"default","author":"steven-JC","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","language":"zh-hans","output.name":"site","gitbook":"3.2.3","description":"tunkjs入门教程、深入详解、实例说明、tunk相关组件使用说明"},"file":{"path":"doc/base/tunk-api.md","mtime":"2018-01-12T06:57:29.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-15T15:25:13.114Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -722,10 +670,6 @@ tunk.config({debug:<span class="hljs-literal">true</span>});
     
         
         <script src="../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         
