@@ -1,5 +1,5 @@
 {
-    "title": "学习笔记",
+    "title": "tunkjs文档",
     "description": "tunkjs入门教程、深入详解、实例说明、tunk相关组件使用说明",
     "author": "steven-JC",
     "output.name": "site",
@@ -55,7 +55,7 @@
             ]
         },
         "tbfed-pagefooter": {
-            "copyright":"Copyright &copy tunkjs.com 2018",
+            "copyright": "粤ICP备18005283号 | Copyright &copy tunkjs.com 2018",
             "modify_label": "上次更新：",
             "modify_format": "YYYY-MM-DD HH:mm:ss"
         },

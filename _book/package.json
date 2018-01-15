@@ -1,9 +1,12 @@
 {
-    "scripts": {
-        "start": "pm2 startOrReload pm2.config.js"
-    },
-    "dependencies": {
-        "koa": "^2.4.1",
-        "koa-static": "^4.0.2"
-    }
+  "scripts": {
+    "start": "pm2 startOrReload pm2.config.js"
+  },
+  "dependencies": {
+    "koa": "^2.4.1",
+    "koa-static": "^4.0.2"
+  },
+  "devDependencies": {
+    "koa-static-cache": "^5.1.1"
+  }
 }
