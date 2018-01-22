@@ -52,4 +52,6 @@ p{
 .book .book-summary .exc-trigger{
     top: 7px;
 }
-
+.book .book-body .page-wrapper .page-inner section.normal pre .hljs-comment, .book .book-body .page-wrapper .page-inner section.normal code .hljs-comment {
+    color: #ab1111;
+}

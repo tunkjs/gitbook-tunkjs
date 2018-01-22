@@ -22,7 +22,6 @@
         "tbfed-pagefooter",
         "alerts",
         "sitemap",
-        "simple-page-toc",
         "expandable-chapters-small"
     ],
 
@@ -31,10 +30,7 @@
     },
 
     "pluginsConfig": {
-        "simple-page-toc": {
-            "maxDepth": 4,
-            "skipFirstH1": true
-        },
+        
         "sitemap": {
             "hostname": "http://www.tunkjs.com/"
         },
