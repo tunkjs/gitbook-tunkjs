@@ -21,7 +21,6 @@
         "anchors",
         "tbfed-pagefooter",
         "alerts",
-        "versions-select",
         "sitemap",
         "simple-page-toc",
         "expandable-chapters-small"
@@ -59,14 +58,7 @@
             "modify_label": "上次更新：",
             "modify_format": "YYYY-MM-DD HH:mm:ss"
         },
-        "versions": {
-            "options": [
-                {
-                    "value": "http://doc.tunkjs.com",
-                    "text": "v3.5.0"
-                }
-            ]
-        },
+        
         "anchor-navigation-ex": {
             "isRewritePageTitle": true,
             "isShowTocTitleIcon": true,
