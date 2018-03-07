@@ -15,7 +15,7 @@ constructor() {
 
 ## state
 
-定义或读取状态树节点的数据，初始化之后state为只读属性，再次赋值将报错
+定义状态树节点的数据
 
 state属性只能在`constructor`内赋值，模块初始化之后会在Store状态树中生成与模块类名同名的节点，state被赋予的值作为该节点的内容
 
@@ -27,6 +27,10 @@ class userAdmin{
             list:[],
             total: 0
         };
+    }
+}
+
+
         /*
         初始化后，store状态树生成节点
         state tree  {
@@ -37,27 +41,22 @@ class userAdmin{
             ....其他节点
         }
         */
-    }
-}
 ````
 
-state的值必须是一个Object对象，对象的字段和字段对应的初始值作为该模块定义的状态字段及字段初始值，因此，对state赋值可视为定义该模块负责维护的状态字段
+state的值必须是一个Object对象，对象的字段和字段对应的初始值作为该模块定义的状态字段及字段初始值
 
 模块实际不存储数据，读取的数据都来自状态树相应节点的状态快照
 
 ## getState
-获得当前模块或其他模块对应状态树节点的状态快照
+获得当前模块对应状态树节点的状态快照
 
 `this.getState([statePath:string]);` 
 
 ````javascript
 myMethodOfModule(){
 
-    // 不传参数读取的是当前模块的状态，this.state读取数据就用到 this.getState();
+    // 不传参数读取的是当前模块的状态，读取数据就用到 this.getState();
     this.getState(); 
-
-    // 获取模块名为'userAdmin'的模块负责维护的所有状态
-    this.getState('userAdmin');
 
     // 获取模块名为'userAdmin'的模块字段名为'list'的状态
     this.getState('userAdmin.list');
