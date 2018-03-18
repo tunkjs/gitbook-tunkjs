@@ -68,19 +68,11 @@ myMethodOfModule(){
 ````
 
 ## dispatch
-内容分发，负责从action或非aciton方法中将数据传入tunk进入到后续处理环节
+负责从action或非aciton方法中将数据传入tunk进入到后续处理环节
 
 `this.dispatch([arg1, arg2, arg3...]);`
 
-dispatch只起到一个传递数据的作用，传参格式由中间件决定，tunk内部内置三个中间件：Promise中间件、Action调起中间件、状态合并中间件。这里只讲述dispatch默认支持哪些参数传递。
-
-**Action调起中间件**
-
-`this.dispatch('moduleName.actionName'[, arg1, arg2...])`
-
-如：`this.dispatch('userAdmin.fetchList');`
-
-调起当前模块的action可以省略moduleName，`this.dispatch('fetchList')`
+dispatch只起到一个传递数据的作用，传参格式由中间件决定，tunk内部内置一个中间件：Promise中间件。
 
 **Promise中间件**
 
@@ -89,12 +81,6 @@ dispatch只起到一个传递数据的作用，传参格式由中间件决定，
 异步action也是通过Promise中间件实现的
 
 promise中间件执行完，由于产生数据变更会将promise处理结果重新dispatch进入中间件处理
-
-**状态合并中间件**
-
-`this.dispatch({stateName: value})`
-
-数据流入中间件处理流程之后，当数据传递到状态合并中间件的时候，如果是一个参数并且参数是一个Object对象，就会进入到状态合并中间件处理流程，将数据递交给Store处理
 
 关于更多中间件的内容，请查看 [组件开发-中间件](../plugin-dev/middleware.md)
 
